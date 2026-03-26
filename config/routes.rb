@@ -5,9 +5,9 @@ Rails.application.routes.draw do
 
   get "rooms", to: "rooms#index", as: "rooms"
 
-  resources :hotels do
-    resources :rooms, only: [ :index, :show ] do
-      resources :bookings, only: [ :create ]
+  resources :hotels, only: [:index] do
+    resources :rooms, only: [:index, :show] do
+      resources :bookings, only: [:create]
     end
   end
 end

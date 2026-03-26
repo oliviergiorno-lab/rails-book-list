@@ -1,5 +1,21 @@
-<div class="container mt-5 text-center">
-  <h1>🏨 Bienvenue sur Book Rooms</h1>
-  <p class="lead mt-3">Trouvez et réservez des chambres d'hôtel à prix réduit.</p>
-  <%= link_to "Voir toutes les chambres", rooms_path, class: "btn btn-primary btn-lg mt-3" %>
+<div class="container mt-5">
+  <div class="text-center mb-5">
+    <h1>🏨 Bienvenue sur Book Rooms</h1>
+    <p class="lead mt-3">Trouvez et réservez des chambres d'hôtel à prix réduit.</p>
+  </div>
+
+  <h2>Nos hôtels</h2>
+  <div class="row">
+    <% @hotels.each do |hotel| %>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><%= hotel.name %></h5>
+            <p class="card-text"><%= hotel.address %></p>
+            <%= link_to "Voir les chambres", hotel_rooms_path(hotel), class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
