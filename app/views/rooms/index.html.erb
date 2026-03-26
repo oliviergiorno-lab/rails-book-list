@@ -1,0 +1,19 @@
+<div class="container mt-4">
+  <h1>Toutes les chambres</h1>
+
+  <div class="row">
+    <% @rooms.each do |room| %>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Chambre <%= room.id %></h5>
+            <p class="card-text">Capacité : <%= room.capacity %> personne(s)</p>
+            <p class="card-text">Prix : <%= room.daily_price %> €/nuit</p>
+            <p class="card-text">Hôtel : <%= room.hotel.name %></p>
+            <%= link_to "Voir le détail", hotel_room_path(room.hotel, room), class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

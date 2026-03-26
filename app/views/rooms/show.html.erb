@@ -1,0 +1,26 @@
+<div class="container mt-4">
+  <h1>Chambre <%= @room.id %></h1>
+  <p>Capacité : <%= @room.capacity %> personne(s)</p>
+  <p>Prix : <%= @room.daily_price %> €/nuit</p>
+  <p>Hôtel : <%= @hotel.name %> — <%= @hotel.address %></p>
+
+  <%= link_to "← Retour à la liste", rooms_path, class: "btn btn-secondary mb-4" %>
+
+  <h2>Réserver cette chambre</h2>
+
+  <% if notice %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <%= notice %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+  <% end %>
+
+  <%= form_with model: [@hotel, @room, @booking] do |f| %>
+    <div class="mb-3">
+      <%= f.label :start_date, "Dates de séjour" %>
+      <%= f.text_field :start_date, id: "booking_dates", class: "form-control", placeholder: "Sélectionnez une période" %>
+      <%= f.hidden_field :end_date, id: "booking_end_date" %>
+    </div>
+    <%= f.submit "Réserver", class: "btn btn-success" %>
+  <% end %>
+</div>
